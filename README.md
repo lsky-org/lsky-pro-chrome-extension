@@ -4,7 +4,7 @@
 ![demo.gif](images/demo.gif)
 
 ## 说明
-> 目前只支持 Lsky Pro 1.5.4 及更高版本, 目前没有上架至 Google Chrome 应用商店(穷), 需要自行下载安装.
+> 目前只支持 Lsky Pro 1.5.4 及更高版本, 并且没有上架至 Google Chrome 应用商店(穷), 需要自行下载安装.
 
 ## 下载
 - [Chrome.crx](https://github.com/wisp-x/lsky-pro-chrome-extension/releases)
