@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+  "name": "Lsky Pro",
+  "version": "1.0.0",
+  "description": "兰空图床上传图片拓展",
+  "icons":
+  {
+    "16": "images/icon/icon_16.png",
+    "48": "images/icon/icon_48.png",
+    "128": "images/icon/icon_128.png"
+  },
+  "permissions":
+  [
+    "storage",
+    "contextMenus",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "homepage_url": "https://www.lsky.pro",
+  "options_page": "options.html",
+  "options_ui":
+  {
+    "page": "options.html",
+    "chrome_style": false
+  },
+  "browser_action":
+  {
+    "default_icon": "images/icon/icon_128.png",
+    "default_title": "点击打开上传图片区域",
+    "default_popup": "popup.html"
+  }
+}

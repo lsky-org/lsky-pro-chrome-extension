@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CH">
+<head>
+  <meta charset="UTF-8">
+  <title>上传文件</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <ul class="link-items"></ul>
+  <div class="options">
+    <input type="file" class="hide" id="image-input" name="image" multiple="multiple" accept="image/*">
+    <span class="btn select-files upload-btn m-b-10">选择图片</span>
+    <span class="btn history">历史记录</span>
+  </div>
+  <div class="history-mask"></div>
+  <div class="history-container">
+    <ul class="link-items"></ul>
+    <span class="btn clear-history">清空记录</span>
+  </div>
+</div>
+</body>
+<script src="js/clipboard.min.js"></script>
+<script src="js/upload.js"></script>
+</html>
