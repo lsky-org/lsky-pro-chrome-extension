@@ -19,24 +19,23 @@ $(function () {
   chrome.storage.sync.get({token: "", domain: "", account: "", password: ""}, (storage) => {
     const $initialize = () => {
       $.ajax({
-        url: storage.domain + "/api/token",
+        url: storage.domain + "/api/v1/tokens",
         dataType: "JSON",
         type: "POST",
         async: true,
         data: {
           email: storage.account,
-          password: storage.password,
-          refresh: false,
+          password: storage.password
         },
         success: (response) => {
-          if (200 === response.code) {
+          if (response.status) {
             chrome.storage.sync.set({token: response.data.token});
           } else {
             alert(response.msg);
           }
         },
         error: (error) => {
-          alert("出大问题, Token获取失败了, 请检查你的配置.")
+           alert("出大问题, Token获取失败了, 请检查你的配置.")
         }
       });
 
@@ -59,14 +58,14 @@ $(function () {
       let obj = $(this).get(0);
       let length = obj.files.length;
       for (let i = 0; i < length; i++) {
-        formData.append("image", obj.files[i]);
+        formData.append('file',obj.files[i]);
         $.ajax({
-          url: storage.domain + "/api/upload",
+          url: storage.domain + "/api/v1/upload",
           dataType: "JSON",
           type: "POST",
           async: true,
           data: formData,
-          headers: {Token: storage.token},
+          headers: {Authorization: "Bearer " + storage.token},
           processData: false,
           contentType: false,
           beforeSend: () => {
@@ -74,11 +73,13 @@ $(function () {
             $('.select-files').attr('disabled', true).text("上传中(" + num + ")...");
           },
           success: (response) => {
-            if (200 === response.code) {
-              $(".container > ul.link-items").prepend('<li><input type="text" value="' + response.data.url + '"><span class="copy">Copy</span></li>');
-              chrome.storage.local.get(["history"], (result) => {
+            
+            if (response.status) {
+              console.log(response);
+              $(".container > ul.link-items").prepend('<li><input type="text" value="' + response.data.links.url + '"><span class="copy">Copy</span></li>');
+              chrome.storage.sync.get(["history"], (result) => {
                 let history = result.history || [];
-                history.push({url: response.data.url});
+                history.push({url: response.data.links.url});
                 chrome.storage.local.set({history: history});
               });
               num--;
