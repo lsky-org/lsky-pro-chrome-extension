@@ -80,7 +80,7 @@ $(function () {
               chrome.storage.sync.get(["history"], (result) => {
                 let history = result.history || [];
                 history.push({url: response.data.links.url});
-                chrome.storage.sync.set({history: history});
+                chrome.storage.local.set({history: history});
               });
               num--;
               if (num === 0) {
