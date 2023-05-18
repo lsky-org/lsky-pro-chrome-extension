@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Lsky Pro",
-  "version": "1.0.0",
+  "version": "2.0",
   "description": "兰空图床上传图片拓展",
   "icons":
   {
